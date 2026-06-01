@@ -16,6 +16,22 @@ if (menuToggle) {
     });
 }
 
+function initMobileHeaderScroll() {
+    const updateHeaderState = () => {
+        const headerQuote = document.querySelector('.header-quote');
+        if (!headerQuote) return;
+        const isMobile = window.innerWidth <= 768;
+        const shouldHide = isMobile && window.scrollY > 24;
+        document.body.classList.toggle('header-scrolled', shouldHide);
+    };
+
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    window.addEventListener('resize', updateHeaderState);
+    updateHeaderState();
+}
+
+initMobileHeaderScroll();
+
 // Animação de entrada suave
 window.addEventListener('load', () => {
     document.querySelectorAll('.hero-image, .hero-text, .hero-quote, .section-title, .detail-box, .quote-box, .location-item, .method-box, .btn-prev, .btn-next, .btn-home').forEach((el, index) => {
