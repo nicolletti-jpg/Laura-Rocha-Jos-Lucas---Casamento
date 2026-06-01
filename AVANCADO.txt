@@ -1,0 +1,300 @@
+<!-- EXEMPLOS DE PERSONALIZAÇÃO AVANÇADA -->
+
+# 🚀 EXEMPLOS DE PERSONALIZAÇÃO AVANÇADA
+
+## 1️⃣ ADICIONAR MAPA (Seção Localizações)
+
+Substitua a seção `id="localizacoes"` por:
+
+```html
+<section id="localizacoes" class="localizacoes">
+    <div class="localizacoes-container">
+        <h2 class="section-title">Localizações</h2>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834....SEU_URL_DO_MAPS" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+            </iframe>
+        </div>
+
+        <div class="location-details">
+            <h3>Como Chegar</h3>
+            <p>Endereço completo aqui...</p>
+        </div>
+    </div>
+</section>
+```
+
+Adicione no CSS:
+```css
+.map-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.location-details {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+```
+
+---
+
+## 2️⃣ ADICIONAR FORMULÁRIO DE CONFIRMAÇÃO
+
+Substitua a seção `id="confirmacao"` por:
+
+```html
+<section id="confirmacao" class="confirmacao">
+    <div class="confirmacao-container">
+        <h2 class="section-title">Confirmação de Presença</h2>
+        
+        <form class="form-confirmacao" method="POST" action="processar.php">
+            <div class="form-group">
+                <label for="nome">Nome Completo *</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone">
+            </div>
+
+            <div class="form-group">
+                <label for="pessoas">Quantas pessoas virão? *</label>
+                <select id="pessoas" name="pessoas" required>
+                    <option value="">Selecione...</option>
+                    <option value="1">1 pessoa</option>
+                    <option value="2">2 pessoas</option>
+                    <option value="3">3 pessoas</option>
+                    <option value="4">4 ou mais</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dieta">Restrições Dietéticas</label>
+                <textarea id="dieta" name="dieta" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn-confirmar">Confirmar Presença</button>
+        </form>
+    </div>
+</section>
+```
+
+Adicione no CSS:
+```css
+.form-confirmacao {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn-confirmar {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-confirmar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+}
+```
+
+---
+
+## 3️⃣ ADICIONAR GALERIA DE FOTOS
+
+Crie uma nova seção entre as existentes:
+
+```html
+<section id="galeria" class="galeria">
+    <div class="galeria-container">
+        <h2 class="section-title">Momentos Especiais</h2>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="foto1.jpg" alt="Momento 1">
+            </div>
+            <div class="gallery-item">
+                <img src="foto2.jpg" alt="Momento 2">
+            </div>
+            <div class="gallery-item">
+                <img src="foto3.jpg" alt="Momento 3">
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+Adicione no CSS:
+```css
+.galeria {
+    background: var(--light-bg);
+    padding: 120px 2rem 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+```
+
+---
+
+## 4️⃣ MUDAR FONTE
+
+Adicione no `<head>` do HTML:
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+```
+
+Mude no CSS:
+```css
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, .section-title {
+    font-family: 'Playfair Display', serif;
+}
+```
+
+---
+
+## 5️⃣ ADICIONAR MÚSICA DE FUNDO
+
+Adicione antes do `</body>`:
+
+```html
+<audio id="bgMusic" autoplay loop style="display: none;">
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="toggleMusic()" class="btn-musica">🎵 Música</button>
+```
+
+Adicione no JavaScript:
+
+```javascript
+function toggleMusic() {
+    const audio = document.getElementById('bgMusic');
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+}
+```
+
+Adicione no CSS:
+
+```css
+.btn-musica {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+```
+
+---
+
+## 💡 MAIS IDEIAS
+
+- Adicionar contador regressivo para o casamento
+- Integrar com WhatsApp para confirmação
+- Adicionar lista de presentes
+- Criar seção de histórias dos noivos
+- Adicionar timeline do casamento
+- Integrar com Instagram
+
+---
+
+**Aproveite a criatividade! 🎉**

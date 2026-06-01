@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Laura & José</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cart-list { max-width:900px; margin:2rem auto; padding:1rem; }
+        .cart-item { display:flex; gap:1rem; align-items:center; background:var(--white); padding:1rem; border-radius:10px; margin-bottom:0.75rem; }
+        .cart-item img { width:80px; height:80px; object-fit:cover; border-radius:8px; }
+        .cart-actions { display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1rem; }
+        .total { font-weight:700; font-size:1.25rem; }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="header-content">
+            <h1>Carrinho</h1>
+            <nav class="page-nav">
+                <a href="presentes.html">← Voltar aos presentes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="cart-list">
+            <h2 class="section-title">Itens no carrinho</h2>
+            <div id="cartItems"></div>
+
+            <div style="margin-top:1.5rem; display:flex; justify-content:space-between; align-items:center;">
+                <div class="total">Total: <span id="cartTotal">R$0,00</span></div>
+                <div class="cart-actions">
+                    <button id="copyCpf" class="btn-whatsapp">Copiar CPF (Pix)</button>
+                    <button id="cancelar" class="btn-prev">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Cart page interactions
+        const CPF_VALUE = '076.116.731-57';
+
+        function formatBRL(v){
+            return new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v);
+        }
+
+        function renderCart(){
+            const cart = JSON.parse(localStorage.getItem('cart')||'[]');
+            const container = document.getElementById('cartItems');
+            container.innerHTML = '';
+            let total = 0;
+            cart.forEach(item=>{
+                total += Number(item.price||0);
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `<img src="${item.src||''}" alt="${item.name||''}"><div style="flex:1;"><strong>${item.name||''}</strong><div>${item.desc||''}</div></div><div style="text-align:right;"><div>${formatBRL(Number(item.price||0))}</div><button class=\"btn-prev\" data-id=\"${item.id}\">Remover</button></div>`;
+                container.appendChild(div);
+            });
+            document.getElementById('cartTotal').textContent = formatBRL(total);
+            container.querySelectorAll('.btn-prev').forEach(btn=>btn.addEventListener('click',e=>{
+                const id = e.target.dataset.id;
+                removeFromCart(id);
+            }));
+        }
+
+        function removeFromCart(id){
+            let cart = JSON.parse(localStorage.getItem('cart')||'[]');
+            cart = cart.filter(i=>String(i.id)!==String(id));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            // restore item visibility by removing from removedIds
+            let removed = JSON.parse(localStorage.getItem('removedIds')||'[]');
+            removed = removed.filter(r=>String(r)!==String(id));
+            localStorage.setItem('removedIds', JSON.stringify(removed));
+            renderCart();
+        }
+
+        document.getElementById('copyCpf').addEventListener('click', async ()=>{
+            try{
+                await navigator.clipboard.writeText(CPF_VALUE);
+                alert('CPF copiado para a área de transferência.');
+            }catch(e){
+                alert('Não foi possível copiar automaticamente. Selecione e copie manualmente: ' + CPF_VALUE);
+            }
+        });
+
+        document.getElementById('cancelar').addEventListener('click', ()=>{
+            // Cancelar: limpa carrinho e restaura itens
+            localStorage.removeItem('cart');
+            localStorage.removeItem('removedIds');
+            alert('Carrinho cancelado.');
+            renderCart();
+        });
+
+        renderCart();
+    </script>
+</body>
+</html>

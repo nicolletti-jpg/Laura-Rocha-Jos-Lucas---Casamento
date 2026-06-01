@@ -1,0 +1,112 @@
+<!-- GUIA DE CUSTOMIZAÇÃO -->
+
+# 🎨 GUIA COMPLETO DE CUSTOMIZAÇÃO
+
+## 📝 MUDANDO OS NOMES
+
+### No arquivo `index.php` ou `index.html`:
+
+1. **Navegar até a linha com `<h1 class="navbar-title">Claire & José</h1>`**
+   - Substitua "Claire & José" pelos nomes desejados
+
+2. **No título da página `<title>`:**
+   - Mude "Claire & José - Nosso Casamento" para o título que preferir
+
+---
+
+## 🎨 MUDANDO AS CORES
+
+### No arquivo `style.css` - Seção `:root`:
+
+```css
+:root {
+    --primary-color: #9b59b6;        /* Cor roxo principal - MUDE AQUI */
+    --primary-dark: #8b4ba8;         /* Cor roxo escuro - MUDE AQUI */
+    --primary-light: #c39bd3;        /* Cor roxo claro - MUDE AQUI */
+    --accent-color: #d7bde2;         /* Cor de acentuação - MUDE AQUI */
+    --text-color: #2c3e50;           /* Cor do texto */
+    --light-bg: #f5f0fa;             /* Fundo claro */
+    --white: #ffffff;                /* Branco */
+}
+```
+
+### Exemplos de Cores:
+- **Vermelho**: `#c0392b`, `#a93226`, `#f1948a`
+- **Azul**: `#2874a6`, `#1b4965`, `#5dade2`
+- **Verde**: `#27ae60`, `#196f3d`, `#76d7c4`
+- **Laranja**: `#e67e22`, `#d35400`, `#f8b88b`
+
+---
+
+## 📸 ADICIONANDO A IMAGEM
+
+1. Coloque sua foto chamada `image.jpg` na mesma pasta
+2. Se quiser trocar o nome, edite no `index.php` ou `index.html`:
+   - `<img src="image.jpg"` → mude `image.jpg` para o nome do arquivo
+
+---
+
+## ✏️ MUDANDO O CONTEÚDO
+
+### Data, Horário e Local:
+
+**Encontre esta seção no HTML:**
+```html
+<div class="detail-box">
+    <h3 class="detail-label">Data</h3>
+    <p class="detail-text">18 de julho de 2026</p>
+</div>
+```
+
+Mude o texto conforme necessário.
+
+### Quote/Frase:
+
+Procure por:
+```html
+<p class="quote-text">"Cada página deste site guarda algo especial e importante."</p>
+```
+
+E altere o texto entre as aspas.
+
+---
+
+## 🔗 ADICIONANDO NOVAS SEÇÕES
+
+1. Crie um novo `<section id="novo-id" class="nova-classe">`
+2. Adicione um novo link no menu:
+   ```html
+   <li><a href="#novo-id" class="nav-link">Nova Seção</a></li>
+   ```
+3. Crie os estilos CSS correspondentes
+
+---
+
+## 📱 TESTANDO NO CELULAR
+
+Se estiver usando PHP server local (`localhost:8000`):
+- Encontre seu IP local: `ipconfig` (no cmd)
+- Acesse de outro dispositivo: `http://SEU_IP:8000`
+
+---
+
+## 💾 SALVANDO ALTERAÇÕES
+
+Todos os arquivos são editáveis com um editor de texto simples:
+- Notepad
+- Visual Studio Code
+- Sublime Text
+- Qualquer editor de código
+
+---
+
+## 🚀 DICAS EXTRAS
+
+1. **Remover seções**: Delete as tags `<section>` inteiras e os links do menu
+2. **Adicionar efeito parallax**: Aumente o efeito visual com CSS mais avançado
+3. **Adicionar formulário**: Crie um formulário HTML na seção "Confirmação"
+4. **Integrar mapa**: Use Google Maps iframe na seção "Localizações"
+
+---
+
+**Dúvidas? Consulte o README.md para mais informações!**
