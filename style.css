@@ -5,7 +5,7 @@
 }
 
 :root {
-    --primary-color: #bd86bd;
+    --primary-color: #c4a0c4;
     --primary-dark: #8f5d8f;
     --primary-light: #f5e7f5;
     --accent-color: #f7eef7;
@@ -13,7 +13,7 @@
     --light-bg: #fdf8fd;
     --white: #fffafd;
     --gold: #f4def4;
-    --lilac: #bd86bd;
+    --lilac: #c4a0c4;
 } 
 
 html {
@@ -24,7 +24,7 @@ body {
     font-family: 'Cormorant Garamond', serif;
     color: var(--text-color);
     overflow-x: hidden;
-    background: var(--light-bg);
+    background: linear-gradient(180deg, #f3e3f8 0%, #e9d4f0 45%, #f7ecf8 100%);
     line-height: 1.6;
 }
 
@@ -33,32 +33,132 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #bd86bd;
+    background: linear-gradient(180deg, #edd3f1 0%, #e0b5e8 35%, #f0e1f6 100%);
     padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.landing-page .flower {
+    position: absolute;
+    width: 44rem;
+    height: 44rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top left;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 0;
+}
+
+.landing-page .flower4 {
+    background-image: url('flor4.png');
+}
+
+.landing-page .top-left {
+    top: -2rem;
+    left: -2rem;
+    transform: scaleY(-1);
+}
+
+.landing-page .top-right {
+    top: -2rem;
+    right: -2rem;
+    transform: scale(-1, -1);
+}
+
+.landing-page .bottom-left {
+    bottom: -2rem;
+    left: -2rem;
+    transform: none;
+}
+
+.landing-page .bottom-right {
+    bottom: -2rem;
+    right: -2rem;
+    transform: scaleX(-1);
 }
 
 .landing-content {
     max-width: 560px;
     width: 100%;
     text-align: center;
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 24px;
     padding: 3rem 2rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 24px 80px rgba(134, 59, 136, 0.16);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .landing-page {
+        padding: 1.2rem;
+    }
+
+    .landing-page .flower {
+        width: 260px;
+        height: 260px;
+        opacity: 0.92;
+    }
+
+    .landing-page .top-left {
+        top: -1.2rem;
+        left: -1.2rem;
+        transform: scaleY(-1);
+    }
+
+    .landing-page .top-right {
+        top: -1.2rem;
+        right: -1.2rem;
+        transform: scale(-1, -1);
+    }
+
+    .landing-page .bottom-left {
+        bottom: -1.2rem;
+        left: -1.2rem;
+        transform: none;
+    }
+
+    .landing-page .bottom-right {
+        bottom: -1.2rem;
+        right: -1.2rem;
+        transform: scaleX(-1);
+    }
+
+    .landing-content {
+        padding: 2rem 1.5rem;
+        border-radius: 22px;
+    }
+
+    .landing-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .landing-quote {
+        font-size: 1rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .enter-button {
+        width: 100%;
+        padding: 1rem 1rem;
+    }
 }
 
 .landing-content h1 {
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: #bd86bd;
+    color: #c4a0c4;
 }
 
 .landing-quote {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
-    color: #bd86bd;
+    color: #c4a0c4;
     margin-bottom: 2rem;
     line-height: 1.8;
 } 
@@ -85,7 +185,7 @@ body {
     position: sticky;
     top: 0;
     width: 100%;
-    background: #bd86bd;
+    background: #c4a0c4;
     border-bottom: 1px solid rgba(189, 134, 189, 0.35);
     backdrop-filter: blur(10px);
     z-index: 100;
@@ -146,7 +246,7 @@ body {
 
 /* ===== PÁGINA PRINCIPAL COM FOTO ===== */
 .hero-main {
-    background: #bd86bd;
+    background: #c4a0c4;
     position: relative;
     overflow: hidden;
     min-height: 100vh;
